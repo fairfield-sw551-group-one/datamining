@@ -13,6 +13,7 @@ import argparse
 import numpy as np
 import keras
 import keras.backend as K
+import sys
 from keras.layers import Dense
 from keras.models import Sequential
 from pandas import DataFrame
@@ -39,11 +40,13 @@ from math import sqrt
 from matplotlib import pyplot
 
 warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore",category=DeprecationWarning)
 #print (plt.style.available)
 plt.style.use('fivethirtyeight')
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--model", "-m", help="Specify a model to forecast.")
+parser.add_argument("--model", "-m", required=True, help="Specify a model to forecast.")
+parser.add_argument("--patient", "-p", required=False, help="Specify a patient id.")
 args = parser.parse_args()
 
 ###############################################
@@ -112,61 +115,69 @@ def adj_r2_score(r2, n, k):
 	return 1-((1-r2)*((n-1)/(n-k-1)))
 ###############################################
 
+model_type = args.model
+if args.patient is not None:
+	patient_id = int(args.patient)
+else:
+	patient_id = 36
+plot = True
+
 df = pd.read_csv("CHARTEVENTS_HR_FILTERED.csv")
 #,SUBJECT_ID,HADM_ID,ICUSTAY_ID,CHARTTIME,HEART_RATE
-heart_rate_36 = df.loc[df['SUBJECT_ID'] == 36]
-heart_rate_36 = heart_rate_36[['CHARTTIME','HEART_RATE']]
+heart_rate = df.loc[df['SUBJECT_ID'] == patient_id]
+
+if heart_rate.shape[0] == 0:
+	sys.exit("Error: No patient found with id '" + str(patient_id) + "'!")
+
+heart_rate = heart_rate[['CHARTTIME','HEART_RATE']]
 
 #Make the index a time datatype, make only one reading per hour and fill in missing values
-heart_rate_36['CHARTTIME'] = pd.to_datetime(heart_rate_36['CHARTTIME'])
-heart_rate_36 = heart_rate_36.set_index('CHARTTIME')
-heart_rate_36_resampled = heart_rate_36.resample('H').mean()
-heart_rate_36_resampled = heart_rate_36_resampled.interpolate(method='linear')
+heart_rate['CHARTTIME'] = pd.to_datetime(heart_rate['CHARTTIME'])
+heart_rate = heart_rate.set_index('CHARTTIME')
+heart_rate_resampled = heart_rate.resample('H').mean()
+heart_rate_resampled = heart_rate_resampled.interpolate(method='linear')
 
-#print ("Original data points: " + str(len(heart_rate_36)))
-#print ("Resampled hourly data points: " + str(len(heart_rate_36_resampled)))
-
-model_type = args.model
-plot = True
+#print ("Original data points: " + str(len(heart_rate)))
+#print ("Resampled hourly data points: " + str(len(heart_rate_resampled)))
 
 if model_type.upper() == 'AR':
 	#Autoregression (AR)
-	model = AR(heart_rate_36_resampled)
+	model = AR(heart_rate_resampled)
 	model_fit = model.fit()
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24)
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24)
 elif model_type.upper() == 'MA':
 	#Moving Average (MA)
-	model = ARMA(heart_rate_36_resampled, order=(0, 1))
+	model = ARMA(heart_rate_resampled, order=(0, 1))
 	model_fit = model.fit(disp=False)
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24)
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24)
 elif model_type.upper() == 'ARMA':
 	#Autoregressive Moving Average (ARMA)
-	model = ARMA(heart_rate_36_resampled, order=(2, 1))
+	model = ARMA(heart_rate_resampled, order=(2, 1))
 	model_fit = model.fit(disp=False)
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24)
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24)
 elif model_type.upper() == 'ARIMA':
 	#Autoregressive Integrated Moving Average (ARIMA)
-	model = ARIMA(heart_rate_36_resampled, order=(1, 1, 1))
+	model = ARIMA(heart_rate_resampled, order=(1, 1, 1))
 	model_fit = model.fit(disp=False)
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24, typ='levels')
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24, typ='levels')
 elif model_type.upper() == 'SARIMA':
 	#Seasonal Autoregressive Integrated Moving-Average (SARIMA)
-	model = SARIMAX(heart_rate_36_resampled, order=(1, 1, 1), seasonal_order=(1, 1, 1, 1))
+	model = SARIMAX(heart_rate_resampled, order=(1, 1, 1), seasonal_order=(1, 1, 1, 1))
 	model_fit = model.fit(disp=False)
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24)
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24)
 elif model_type.upper() == 'SES':
 	#Simple Exponential Smoothing (SES)
-	model = SimpleExpSmoothing(heart_rate_36_resampled)
+	model = SimpleExpSmoothing(heart_rate_resampled)
 	model_fit = model.fit()
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24)
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24)
 elif model_type.upper() == 'HWES':
-	#Holt Winter’s Exponential Smoothing (HWES)
-	model = ExponentialSmoothing(heart_rate_36_resampled)
+	#Holt Winter's Exponential Smoothing (HWES)
+	model = ExponentialSmoothing(heart_rate_resampled)
 	model_fit = model.fit()
-	heart_rate_36_forecast = model_fit.predict(len(heart_rate_36_resampled), len(heart_rate_36_resampled)+24)
+	heart_rate_forecast = model_fit.predict(len(heart_rate_resampled), len(heart_rate_resampled)+24)
 elif model_type.upper() == 'LSTM':
 	#Long Short Term Memory Nueral Network
-	raw_values = heart_rate_36_resampled.values
+	raw_values = heart_rate_resampled.values
 	diff_values = difference(raw_values, 1)
 	supervised = timeseries_to_supervised(diff_values, 1)
 	supervised_values = supervised.values
@@ -200,7 +211,7 @@ elif model_type.upper() == 'LSTM':
 	plot = False
 elif model_type.upper() == 'RK':
 	#Regresision Using Keras NN
-	raw_values = heart_rate_36_resampled.values
+	raw_values = heart_rate_resampled.values
 	train, test = raw_values[0:-24], raw_values[-24:]
 	sc = MinMaxScaler()
 	train_sc = sc.fit_transform(train)
@@ -244,8 +255,8 @@ else:
 
 if plot:
 	plt.figure(figsize=(16,8))
-	plt.plot(heart_rate_36, label='Original')
-	plt.plot(heart_rate_36_resampled, label='Resampled')
-	plt.plot(heart_rate_36_forecast, label=model_type + ' Forecast')
+	plt.plot(heart_rate, label='Original')
+	plt.plot(heart_rate_resampled, label='Resampled')
+	plt.plot(heart_rate_forecast, label=model_type + ' Forecast')
 	plt.legend(loc='best')
 	plt.show()
