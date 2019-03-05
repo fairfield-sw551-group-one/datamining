@@ -87,7 +87,7 @@ def scale(train, test):
 # inverse scaling for a forecasted value
 def invert_scale(scaler, X, value):
 	new_row = [x for x in X] + [value]
-	array = numpy.array(new_row)
+	array = np.array(new_row)
 	array = array.reshape(1, len(array))
 	inverted = scaler.inverse_transform(array)
 	return inverted[0, -1]
@@ -200,15 +200,17 @@ elif model_type.upper() == 'LSTM':
 		expected = raw_values[len(train) + i + 1]
 		print('Hour=%d, Predicted=%f, Expected=%f' % (i+1, yhat, expected))
 	
+	heart_rate_forecast = pd.DataFrame(predictions, index=heart_rate_resampled.index[-24:], columns=['Forecast'])
+
 	#Performance
-	rmse = sqrt(mean_squared_error(raw_values[-24:], predictions))
-	print('Test RMSE: %.3f' % rmse)
-	plt.figure(figsize=(16,8))
-	plt.plot(raw_values[-24:], label='Resampled')
-	plt.plot(predictions, label='Forecast')
-	plt.legend(loc='best')
-	plt.show()
-	plot = False
+	#rmse = sqrt(mean_squared_error(raw_values[-24:], predictions))
+	#print('Test RMSE: %.3f' % rmse)
+	#plt.figure(figsize=(16,8))
+	#plt.plot(raw_values[-24:], label='Resampled')
+	#plt.plot(predictions, label='Forecast')
+	#plt.legend(loc='best')
+	#plt.show()
+	#plot = False
 elif model_type.upper() == 'RK':
 	#Regresision Using Keras NN
 	raw_values = heart_rate_resampled.values
@@ -245,8 +247,8 @@ elif model_type.upper() == 'RK':
 	y_pred = model.predict(X_test)
 	print('R-Squared: %f'%(mean_squared_error(y_test, y_pred)))
 	plt.figure(figsize=(16,8))
-	plt.plot(y_test, label='Resampled')
-	plt.plot(y_pred, label='Forecast')
+	plt.plot(sc.inverse_transform(y_test), label='Resampled')
+	plt.plot(sc.inverse_transform(y_pred), label='Forecast')
 	plt.legend(loc='best')
 	plt.show()
 	plot = False
