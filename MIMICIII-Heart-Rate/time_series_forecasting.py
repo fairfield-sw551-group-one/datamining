@@ -124,6 +124,21 @@ plot = True
 
 df = pd.read_csv("CHARTEVENTS_HR_FILTERED.csv")
 #,SUBJECT_ID,HADM_ID,ICUSTAY_ID,CHARTTIME,HEART_RATE
+print ("Dataset Information -------------------------------------")
+print (str(df['SUBJECT_ID'].nunique())+" patients in the data set")
+print (str(df['ICUSTAY_ID'].nunique())+" ICU stays in the data set")
+series_meta = df.groupby(['ICUSTAY_ID']).size()
+print ("Average number of records by ICU stay is "+str(round(series_meta.mean())))
+print ("Smallest number of records by ICU stay is "+str(series_meta.min()))
+print ("Largest number of records by ICU stay is "+str(series_meta.max()))
+print ("")
+for i, v in series_meta.items():
+	if v==series_meta.max():
+		print ("ICU stay "+str(i)+" has "+str(series_meta.max())+" records")
+	if v==series_meta.min():
+		print ("ICU stay "+str(i)+" has "+str(series_meta.min())+" record")
+print ("---------------------------------------------------------")
+
 heart_rate = df.loc[df['SUBJECT_ID'] == patient_id]
 
 if heart_rate.shape[0] == 0:
@@ -243,7 +258,7 @@ elif model_type.upper() == 'RK':
 	model.add(Dense(50, input_shape=(X_test.shape[1],), activation='relu'))
 	model.add(Dense(1))
 	model.compile(optimizer=Adam(lr=0.001), loss='mean_squared_error')
-	model.fit(X_train, y_train, batch_size=16, epochs=20, verbose=1)
+	model.fit(X_train, y_train, batch_size=12, epochs=24, verbose=0)
 	y_pred = model.predict(X_test)
 	print('R-Squared: %f'%(mean_squared_error(y_test, y_pred)))
 	plt.figure(figsize=(16,8))
