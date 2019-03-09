@@ -7,9 +7,9 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+    labels: ["01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00"],
     datasets: [{
-      label: "Sessions",
+      label: "Rate (bpm)",
       lineTension: 0.3,
       backgroundColor: "rgba(2,117,216,0.2)",
       borderColor: "rgba(2,117,216,1)",
@@ -20,14 +20,14 @@ var myLineChart = new Chart(ctx, {
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
       pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+      data: [91,90,87,91,90,81,93,92,79,81,90,79,94,94,91,89,80,86,87,81,80,78,81,78],
     }],
   },
   options: {
     scales: {
       xAxes: [{
         time: {
-          unit: 'date'
+          unit: 'time'
         },
         gridLines: {
           display: false
@@ -38,9 +38,9 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: 0,
-          max: 40000,
-          maxTicksLimit: 5
+          min: 70,
+          max: 110,
+          maxTicksLimit: 15
         },
         gridLines: {
           color: "rgba(0, 0, 0, .125)",
