@@ -18,6 +18,9 @@
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
+  <!-- File Upload CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-FileUpload.css" />
+
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
@@ -100,11 +103,7 @@
                 </div>
                 <div class="card-body">
                   <p class="card-text">This model is used to predict.... Please upload data in file format...</p>
-                  <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                      <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                      <div class="invalid-feedback">Example invalid custom file feedback</div>
-                    </div>
+                  <div class="fileupload-wrapper"><div id="myUpload"></div></div>
                   </form>
                 </div>
               </div>
@@ -164,6 +163,17 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
+
+  <!-- File Upload JavaScript-->
+  <script src="js/bootstrap-FileUpload.js"></script>
+
+  <script>
+    $("#myUpload").bootstrapFileUpload({
+    url: "app.py",
+    formMethod: "post",
+    inputName: 'file'
+    });
+  </script>
 
   <!-- Demo scripts for this page-->
   <script src="js/demo/chart-area-demo.js"></script>
