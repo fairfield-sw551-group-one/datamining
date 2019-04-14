@@ -1,0 +1,536 @@
+[
+    {
+      "beatId": 1,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 85
+    },
+    {
+      "beatId": 2,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 82
+    },
+    {
+      "beatId": 3,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 74
+    },
+    {
+      "beatId": 4,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 91
+    },
+    {
+      "beatId": 5,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 89
+    },
+    {
+      "beatId": 6,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 83
+    },
+    {
+      "beatId": 7,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 73
+    },
+    {
+      "beatId": 8,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 94
+    },
+    {
+      "beatId": 9,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 85
+    },
+    {
+      "beatId": 10,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 86
+    },
+    {
+      "beatId": 11,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 83
+    },
+    {
+      "beatId": 12,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 71
+    },
+    {
+      "beatId": 13,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 91
+    },
+    {
+      "beatId": 14,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 89
+    },
+    {
+      "beatId": 15,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 90
+    },
+    {
+      "beatId": 16,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 86
+    },
+    {
+      "beatId": 17,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 69
+    },
+    {
+      "beatId": 18,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 70
+    },
+    {
+      "beatId": 19,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 92
+    },
+    {
+      "beatId": 20,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 72
+    },
+    {
+      "beatId": 21,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 69
+    },
+    {
+      "beatId": 22,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 72
+    },
+    {
+      "beatId": 23,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 71
+    },
+    {
+      "beatId": 24,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 94
+    },
+    {
+      "beatId": 25,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 72
+    },
+    {
+      "beatId": 26,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 94
+    },
+    {
+      "beatId": 27,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 87
+    },
+    {
+      "beatId": 28,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 86
+    },
+    {
+      "beatId": 29,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 88
+    },
+    {
+      "beatId": 30,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 87
+    },
+    {
+      "beatId": 31,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 87
+    },
+    {
+      "beatId": 32,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 83
+    },
+    {
+      "beatId": 33,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 87
+    },
+    {
+      "beatId": 34,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 89
+    },
+    {
+      "beatId": 35,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 70
+    },
+    {
+      "beatId": 36,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 77
+    },
+    {
+      "beatId": 37,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 81
+    },
+    {
+      "beatId": 38,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 83
+    },
+    {
+      "beatId": 39,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 94
+    },
+    {
+      "beatId": 40,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 86
+    },
+    {
+      "beatId": 41,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 73
+    },
+    {
+      "beatId": 42,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 80
+    },
+    {
+      "beatId": 43,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 94
+    },
+    {
+      "beatId": 44,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 74
+    },
+    {
+      "beatId": 45,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 70
+    },
+    {
+      "beatId": 46,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 92
+    },
+    {
+      "beatId": 47,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 68
+    },
+    {
+      "beatId": 48,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 81
+    },
+    {
+      "beatId": 49,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 89
+    },
+    {
+      "beatId": 50,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 86
+    },
+    {
+      "beatId": 51,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 87
+    },
+    {
+      "beatId": 52,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 70
+    },
+    {
+      "beatId": 53,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 73
+    },
+    {
+      "beatId": 54,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 84
+    },
+    {
+      "beatId": 55,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 79
+    },
+    {
+      "beatId": 56,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 71
+    },
+    {
+      "beatId": 57,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 89
+    },
+    {
+      "beatId": 58,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 68
+    },
+    {
+      "beatId": 59,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 88
+    },
+    {
+      "beatId": 60,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 77
+    },
+    {
+      "beatId": 61,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 85
+    },
+    {
+      "beatId": 62,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 71
+    },
+    {
+      "beatId": 63,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 68
+    },
+    {
+      "beatId": 64,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 77
+    },
+    {
+      "beatId": 65,
+      "timestamp": "timestamp",
+      "type": "Normal",
+      "confidence": 94
+    },
+    {
+      "beatId": 66,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 94
+    },
+    {
+      "beatId": 67,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 91
+    },
+    {
+      "beatId": 68,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 77
+    },
+    {
+      "beatId": 69,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 91
+    },
+    {
+      "beatId": 70,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 68
+    },
+    {
+      "beatId": 71,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 86
+    },
+    {
+      "beatId": 72,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 78
+    },
+    {
+      "beatId": 73,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 73
+    },
+    {
+      "beatId": 74,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 93
+    },
+    {
+      "beatId": 75,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 89
+    },
+    {
+      "beatId": 76,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 90
+    },
+    {
+      "beatId": 77,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 88
+    },
+    {
+      "beatId": 78,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 92
+    },
+    {
+      "beatId": 79,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 70
+    },
+    {
+      "beatId": 80,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 71
+    },
+    {
+      "beatId": 81,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 94
+    },
+    {
+      "beatId": 82,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 87
+    },
+    {
+      "beatId": 83,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 90
+    },
+    {
+      "beatId": 84,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 79
+    },
+    {
+      "beatId": 85,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 73
+    },
+    {
+      "beatId": 86,
+      "timestamp": "timestamp",
+      "type": "PAC",
+      "confidence": 83
+    },
+    {
+      "beatId": 87,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 78
+    },
+    {
+      "beatId": 88,
+      "timestamp": "timestamp",
+      "type": "V-fib",
+      "confidence": 75
+    },
+    {
+      "beatId": 89,
+      "timestamp": "timestamp",
+      "type": "Long QT",
+      "confidence": 76
+    }
+  ]
