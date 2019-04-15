@@ -32,6 +32,7 @@ $(document).ready(function () {
             // Custom XMLHttpRequest
             xhr: function () {
                 var myXhr = $.ajaxSettings.xhr();
+                $('.lds-grid').fadeIn();
                 if (myXhr.upload) {
                     // For handling the progress of the upload
                     myXhr.upload.addEventListener('progress', function (e) {
@@ -46,7 +47,9 @@ $(document).ready(function () {
                 return myXhr;
             },
             success: function (data) {
+                $('.lds-grid').hide();
                 createAreaChart(data.timestamp, data.bpm);
+                $('.dataCard').fadeIn('slow');
             },
             error: function (data) {
                 var json = $.parseJSON(data);
@@ -63,6 +66,8 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Area Chart 
 function createAreaChart(timestamp, bpm){
+    var maxYAxis = Math.ceil((Math.max(...bpm) + 5)/5)*5;
+    var minYAxis = Math.ceil((Math.min(...bpm) - 5)/5)*5;
     var ctx = document.getElementById("myAreaChart");
     var myLineChart = new Chart(ctx, {
       type: 'line',
@@ -81,6 +86,7 @@ function createAreaChart(timestamp, bpm){
           pointHitRadius: 50,
           pointBorderWidth: 2,
           data: bpm,
+          fill : false
         }],
       },
       options: {
@@ -98,8 +104,8 @@ function createAreaChart(timestamp, bpm){
           }],
           yAxes: [{
             ticks: {
-              min: 70,
-              max: 110,
+              min: minYAxis,
+              max: maxYAxis,
               maxTicksLimit: 15
             },
             gridLines: {

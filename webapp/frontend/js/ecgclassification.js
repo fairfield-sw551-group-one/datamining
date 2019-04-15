@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    $('.custom-file-input').on('change', function() { 
-        let fileName = $(this).val().split('\\').pop(); 
-        $(this).next('.custom-file-label').addClass("selected").html(fileName); 
-     });
+
+    $('.custom-file-input').on('change', function () {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
 
 
     $('#fileSubmitForm').submit(function (event) {
@@ -32,6 +33,7 @@ $(document).ready(function () {
             // Custom XMLHttpRequest
             xhr: function () {
                 var myXhr = $.ajaxSettings.xhr();
+                $('.lds-grid').fadeIn();
                 if (myXhr.upload) {
                     // For handling the progress of the upload
                     myXhr.upload.addEventListener('progress', function (e) {
@@ -46,7 +48,10 @@ $(document).ready(function () {
                 return myXhr;
             },
             success: function (data) {
-                createDataTable(data)
+                $('.lds-grid').hide();
+                addDataToTable(data)
+                addDataToPieChart(data)
+                $('.dataCard').fadeIn('slow');
             },
             error: function (data) {
                 var json = $.parseJSON(data);
@@ -56,12 +61,29 @@ $(document).ready(function () {
     });
 });
 
-function createDataTable (data){
+function addDataToTable(data) {
     var t = $('#dataTable').DataTable();
-    $.each(data, function(i){
-        t.row.add([data[i].beatId, 
-                  data[i].timestamp,
-                  data[i].type,
-                  data[i].confidence ]).draw(false);
+    $.each(data, function (i) {
+        t.row.add([data[i].beatId,
+        data[i].timestamp,
+        data[i].type,
+        data[i].confidence]).draw(false);
     })
+}
+
+function addDataToPieChart(data) {
+    var typeArray = data.map(x => x.type);
+    var typeCounts = {};
+    typeArray.forEach(function(x) { typeCounts[x] = (typeCounts[x] || 0)+1; });
+    var ctx = document.getElementById("pieChart");
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(typeCounts),
+            datasets: [{
+                data: Object.values(typeCounts),
+                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+            }],
+        },
+    });
 }

@@ -22,7 +22,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap-FileUpload.css" />
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 
 </head>
 
@@ -102,7 +102,7 @@
                   Heartbeat Time Forcasting
                 </div>
                 <div class="card-body">
-                  <p class="card-text">This model is used to predict.... Please upload data in file format...</p>
+                  <p class="card-text">This model is used to forcast future heartrate data. <br> Please upload a <strong>.csv</strong> file containing bpm data. <br> Visit our <a href ="help.html">help</a> page for more info regaurding the format of this file. </p>
                   <!-- Upload Form-->  
                   <form id="fileSubmitForm">
                   <div class="input-group">
@@ -118,12 +118,13 @@
                 </div>
               </div>
 
-          
+           <!-- Loading Grid-->
+        <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
          
 <!-- End Common Code-->    
 
         <!-- Area Chart -->
-        <div class="card mb-3">
+        <div class="card mb-3 dataCard" >
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
             Predicted Heartrate (24hrs)</div>
@@ -172,7 +173,7 @@
   <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
+  <script src="js/main.min.js"></script>
 
   <!-- File Upload JavaScript-->
   <script src="js/timeforcasting.js"></script>
