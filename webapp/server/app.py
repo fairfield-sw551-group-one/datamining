@@ -63,18 +63,18 @@ def timeforcasingPredict():
         # Load file and perform basic validation
         if not os.path.isfile(file_path):
             print("400: File not found")
-            abort(400, 'File not found')
+            return jsonify(message="File not found"), 400
         if os.path.getsize(file_path) == 0:
             print("400: Empty file found")
-            abort(400, 'Empty file found')
+            return jsonify(message="Empty file found"), 400
 
         df = pd.read_csv(file_path)
         if 'HEART_RATE' not in df.columns:
             print("400: File missing HEART_RATE")
-            abort(400, 'File missing HEART_RATE')
+            return jsonify(message="File missing HEART_RATE"), 400
         if 'CHARTTIME' not in df.columns:
             print("400: File missing CHARTTIME")
-            abort(400, 'File missing CHARTTIME')
+            return jsonify(message="File missing CHARTTIME"), 400
 
         heart_rate = df[['CHARTTIME','HEART_RATE']]
 
@@ -119,13 +119,21 @@ def timeforcasingPredict():
         y_pred = model.predict(X_test)
 
         # Get data for response
-        bpm = sc.inverse_transform(y_pred) #Forecast
-        timestamp = heart_rate_resampled[-24:].index
+        #bpm = sc.inverse_transform(y_pred) #Forecast
+        #timestamp = heart_rate_resampled[-24:].index
 
-        #mock response
-        #timestamp = ['1:00','2:00','3:00','4:00','5:00','6:00','7:00']
-        #bpm = [78, 92, 84, 82, 90, 87 , 94]
         response = jsonify(timestamp=timestamp.tolist(),bpm=bpm.tolist())
+
+        #TODO generate actual response
+        #mock response
+        timestamp = ['1:00','2:00','3:00','4:00','5:00','6:00','7:00']
+        inputBPM = [78, 92, 84, 82, None, None, None]
+        predictBPM = [None, None, None, None, 92, 90, 86]
+        max = 92
+        min = 78
+
+        response = jsonify(timestamp=timestamp, inputBPM=inputBPM, predictBPM= predictBPM, min=79, max=92)
+
         print_debug ("timeforcast/print returning calculated values")
         return response
 

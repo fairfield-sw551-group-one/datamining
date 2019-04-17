@@ -48,12 +48,13 @@ $(document).ready(function () {
             },
             success: function (data) {
                 $('.lds-grid').hide();
-                createAreaChart(data.timestamp, data.bpm);
+                createAreaChart(data.timestamp, data.inputBPM, data.predictBPM, data.max, data.min);
                 $('.dataCard').fadeIn('slow');
             },
             error: function (data) {
-                var json = $.parseJSON(data);
-                alert(json.error);
+                $('.lds-grid').hide();
+                console.log(data);
+                alert(data.responseJSON.message);
             }
         });
     });
@@ -65,16 +66,17 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Area Chart 
-function createAreaChart(timestamp, bpm){
-    var maxYAxis = Math.ceil((Math.max(...bpm) + 5)/5)*5;
-    var minYAxis = Math.ceil((Math.min(...bpm) - 5)/5)*5;
+function createAreaChart(timestamp, inputBPM, predictBPM, max, min){
+    //var allBPM = (inputBPM.concat(predictBPM));
+    var maxYAxis = Math.ceil((Math.max(max) + 5)/5)*5;
+    var minYAxis = Math.ceil((Math.min(min) - 5)/5)*5;
     var ctx = document.getElementById("myAreaChart");
     var myLineChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: timestamp,
         datasets: [{
-          label: "Rate (bpm)",
+          label: "Input (bpm)",
           lineTension: 0.3,
           backgroundColor: "rgba(2,117,216,0.2)",
           borderColor: "rgba(2,117,216,1)",
@@ -85,7 +87,22 @@ function createAreaChart(timestamp, bpm){
           pointHoverBackgroundColor: "rgba(2,117,216,1)",
           pointHitRadius: 50,
           pointBorderWidth: 2,
-          data: bpm,
+          data: inputBPM,
+          fill : false
+        },
+        {
+          label: "Predicted (bpm)",
+          lineTension: 0.3,
+          backgroundColor: "rgba(2,230,130,0.2)",
+          borderColor: "rgba(2,230,130,1)",
+          pointRadius: 5,
+          pointBackgroundColor: "rgba(2,230,130,1)",
+          pointBorderColor: "rgba(255,255,255,0.8)",
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(2,117,216,1)",
+          pointHitRadius: 50,
+          pointBorderWidth: 2,
+          data: predictBPM,
           fill : false
         }],
       },
