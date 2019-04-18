@@ -5,6 +5,9 @@ $(document).ready(function () {
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
 
+    $('.custom-file-input').click(function() {
+        $('.error-feedback').hide();
+      });
 
     $('#fileSubmitForm').submit(function (event) {
         event.preventDefault();
@@ -54,8 +57,9 @@ $(document).ready(function () {
                 $('.dataCard').fadeIn('slow');
             },
             error: function (data) {
-                var json = $.parseJSON(data);
-                alert(json.error);
+                $('.lds-grid').hide();
+                $('.error-feedback').fadeIn('slow');
+                $('.error-feedback').html("Error: " + data.responseJSON.message);
             }
         });
     });

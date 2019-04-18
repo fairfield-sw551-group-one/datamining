@@ -1,8 +1,12 @@
 $(document).ready(function () {
-    $('.custom-file-input').on('change', function() { 
+    $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop(); 
         $(this).next('.custom-file-label').addClass("selected").html(fileName); 
      });
+     
+     $('.custom-file-input').click(function() {
+      $('.error-feedback').hide();
+    });
 
 
     $('#fileSubmitForm').submit(function (event) {
@@ -53,8 +57,8 @@ $(document).ready(function () {
             },
             error: function (data) {
                 $('.lds-grid').hide();
-                console.log(data);
-                alert(data.responseJSON.message);
+                $('.error-feedback').fadeIn('slow');
+                $('.error-feedback').html("Error: " + data.responseJSON.message);
             }
         });
     });

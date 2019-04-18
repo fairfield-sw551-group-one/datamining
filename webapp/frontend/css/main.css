@@ -6790,6 +6790,7 @@ button.bg-success:focus {
   background-color: #17a2b8 !important;
 }
 
+
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
@@ -10532,8 +10533,8 @@ body {
 }
 
 .sidebar.toggled {
-  width: 0 !important;
-  overflow: hidden;
+  overflow: visible;
+  width: 90px !important;
 }
 
 @media (min-width: 768px) {
@@ -10798,3 +10799,9 @@ body.sidebar-toggled footer.sticky-footer {
   }
 }
 
+.error-feedback{
+  display: none;
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
