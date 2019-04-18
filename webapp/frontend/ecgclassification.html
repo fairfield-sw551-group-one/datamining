@@ -103,61 +103,85 @@
             <p class="card-text">This model is used to predict types of arrhythmia present in electrocardiogram waves.
               <br> Please upload a <strong>.csv</strong> file containing ECG readings. <br> Visit our <a
                 href="help.html">help</a> page for more info regaurding the format of this file. </p>
+            <!-- Upload Form-->
             <form id="fileSubmitForm">
               <div class="input-group">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="fileSelect" accept=".csv">
                   <label class="custom-file-label" for="fileSelect">Choose file</label>
                 </div>
-                <div class="input-group-append">
+                <div class="sinput-group-append">
                   <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
               </div>
             </form>
+            <div class="error-feedback"></div>
           </div>
         </div>
 
         <!-- Loading Grid-->
-        <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="lds-grid">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
 
-        <!-- Upload Form-->
-        <!-- Donut Chart -->
-        <div class="col-xl-4 col-lg-5 dataCard">
-          <div class="card mb-3">
-            <!-- Card Body -->
-            <div class="card-body">
+        <div class="row" style="margin-bottom:15px;">
+          <!-- Donut Chart -->
+          <div class="col-xl-4 col-lg-5 dataCard">
+            <div class="card mb-3 h-100">
+              <!-- Card Body -->
+              <div class="card-body">
               <canvas id="pieChart"></canvas>
             </div>
+            </div>
           </div>
-        </div>
 
-        <!-- DataTable -->
-        <div class="card mb-3 dataCard">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Predicted Classifications</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>Beat ID</th>
-                    <th>Timestamp</th>
-                    <th>Type</th>
-                    <th>Confidence</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+
+        <div class="col-xl-8 col-lg-5 dataCard">
+          <div class="card mb-3 h-100">
+              <div class="card-header"></div>
+            <!-- Card Body -->
+            <div class="card-body">
             </div>
           </div>
         </div>
-
       </div>
-      <!-- /.container-fluid -->
+
+
+      <!-- DataTable -->
+      <div class="card mb-3 dataCard">
+        <div class="card-header">
+          <i class="fas fa-table"></i>
+          Predicted Classifications</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Beat ID</th>
+                  <th>Timestamp</th>
+                  <th>Type</th>
+                  <th>Confidence</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <!-- /.content-wrapper -->
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-wrapper -->
 
   </div>
   <!-- /#wrapper -->
@@ -207,4 +231,5 @@
 
 
 </body>
+
 </html>
