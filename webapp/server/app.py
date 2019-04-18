@@ -119,20 +119,29 @@ def timeforcasingPredict():
         y_pred = model.predict(X_test)
 
         # Get data for response
-        #bpm = sc.inverse_transform(y_pred) #Forecast
-        #timestamp = heart_rate_resampled[-24:].index
+        timestamp = heart_rate_resampled.index
+        inputBPM = heart_rate['HEART_RATE'].tolist()
+        predictBPM = sc.inverse_transform(y_pred).tolist()
 
-        response = jsonify(timestamp=timestamp.tolist(),bpm=bpm.tolist())
+        maxBPM = max(inputBPM)
+        minBPM = min(inputBPM)
+
+        # Round up/down to nearest 5
+        minBPM = minBPM - (minBPM % 5)
+        maxBPM = maxBPM + (maxBPM % 5)
+
+        # Pad list with nul values
+        predictBPM = [None] * (len(inputBPM)-24) + predictBPM
 
         #TODO generate actual response
         #mock response
-        timestamp = ['1:00','2:00','3:00','4:00','5:00','6:00','7:00']
-        inputBPM = [78, 92, 84, 82, None, None, None]
-        predictBPM = [None, None, None, None, 92, 90, 86]
-        max = 92
-        min = 78
+        #timestamp = ['1:00','2:00','3:00','4:00','5:00','6:00','7:00']
+        #inputBPM = [78, 92, 84, 82, None, None, None]
+        #predictBPM = [None, None, None, None, 92, 90, 86]
+        #maxBPM = 92
+        #minBPM = 78
 
-        response = jsonify(timestamp=timestamp, inputBPM=inputBPM, predictBPM= predictBPM, min=79, max=92)
+        response = jsonify(timestamp=timestamp.strftime('%m/%d/%Y %H:%M').tolist(), inputBPM=inputBPM, predictBPM=predictBPM, min=minBPM, max=maxBPM)
 
         print_debug ("timeforcast/print returning calculated values")
         return response
