@@ -101,8 +101,10 @@
           </div>
           <div class="card-body">
             <p class="card-text">This model is used to predict types of arrhythmia present in electrocardiogram waves.
-              <br> Please upload a <strong>.csv</strong> file containing ECG readings. <br> Visit our <a
-                href="help.html">help</a> page for more info regaurding the format of this file. </p>
+              <br> Please upload a <strong>.csv</strong> file containing ECG readings. <br> Click
+              <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">Here</a>
+              for more info regaurding the format of this file. </p>
             <!-- Upload Form-->
             <form id="fileSubmitForm">
               <div class="input-group">
@@ -116,8 +118,16 @@
               </div>
             </form>
             <div class="error-feedback"></div>
+            <div class="collapse" id="collapseExample" style="margin-top: 10px;">
+              <div class="card card-body">
+                The model take a single-column CSV file.  <br>
+                The file should have one header title ECG_VALUE
+              </div>
+            </div>
+
           </div>
         </div>
+
 
         <!-- Loading Grid-->
         <div class="lds-grid">
@@ -167,8 +177,8 @@
                   <tr>
                     <th>Beat ID</th>
                     <th>Start</th>
-                    <th>Type</th>
                     <th>End</th>
+                    <th>Type</th>
                   </tr>
                 </thead>
                 <tbody>

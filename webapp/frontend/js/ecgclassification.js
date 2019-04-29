@@ -69,9 +69,9 @@ function addDataToTable(data) {
     var t = $('#dataTable').DataTable();
     $.each(data, function (i) {
         t.row.add([data[i].beatId,
-        data[i].timestamp,
-        data[i].type,
-        data[i].confidence]).draw(false);
+        data[i].start,
+        data[i].end,
+        data[i].type]).draw(false);
     })
 }
 
@@ -86,7 +86,7 @@ function addDataToPieChart(data) {
             labels: Object.keys(typeCounts),
             datasets: [{
                 data: Object.values(typeCounts),
-                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#6838D1', '#F85A3E', '#84CAE7', '#000000'],
             }],
         },
     });

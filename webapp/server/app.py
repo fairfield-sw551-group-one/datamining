@@ -293,8 +293,8 @@ def model_predict(file_path, model):
         elif pred_class == 6:
             VEB.append(indices[count])
             beat['type'] = 'Ventricular Escape'
-        beat['timestamp'] = str(indices[count][0])
-        beat['confidence'] = str(indices[count][1])
+        beat['start'] = str(indices[count][0])
+        beat['end'] = str(indices[count][1])
         json_output.append(beat)
 
     result = sorted(result.items(), key=lambda y: len(y[1]))[::-1]
