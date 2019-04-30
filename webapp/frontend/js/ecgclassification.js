@@ -1,13 +1,15 @@
 $(document).ready(function () {
 
+    $('#APCinfo, #PVCinfo, #LBBBinfo, #RBBBinfo, #VEinfo, #Ninfo').hide();
+
     $('.custom-file-input').on('change', function () {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
 
-    $('.custom-file-input').click(function() {
+    $('.custom-file-input').click(function () {
         $('.error-feedback').hide();
-      });
+    });
 
     $('#fileSubmitForm').submit(function (event) {
         event.preventDefault();
@@ -78,7 +80,8 @@ function addDataToTable(data) {
 function addDataToPieChart(data) {
     var typeArray = data.map(x => x.type);
     var typeCounts = {};
-    typeArray.forEach(function(x) { typeCounts[x] = (typeCounts[x] || 0)+1; });
+    typeArray.forEach(function (x) { typeCounts[x] = (typeCounts[x] || 0) + 1; });
+    addPredictionDescreiptions(typeCounts);
     var ctx = document.getElementById("pieChart");
     var myPieChart = new Chart(ctx, {
         type: 'pie',
@@ -90,4 +93,36 @@ function addDataToPieChart(data) {
             }],
         },
     });
+}
+
+function addPredictionDescreiptions(typeCounts) {
+    var maxKey = "";
+    var maxValue = 0;
+    $.each(typeCounts, function (key, val) {
+        if (val > maxValue && key != "Normal") {
+            maxKey = key;
+            maxValue = val;
+        }
+    })
+
+    switch (maxKey) {
+        case "Premature Ventricular Contraction":
+            $('#PVCinfo').show();
+            break;
+        case "Atrial Premature Contraction":
+            $('#APCinfo').show();
+            break;
+        case "Left Bundle Branch Block":
+            $('#LBBBinfo').show();
+            break;
+        case "Right Bundle Branch Block":
+            $('#RBBBinfo').show();
+            break;
+        case "Ventricular Escape":
+            $('#VEinfo').show();
+            break;
+        default: 
+            $('#Ninfo').show();
+            break;
+    }
 }

@@ -135,7 +135,7 @@ function createAreaChart(timestamp, inputBPM, predictBPM, max, min){
           }],
         },
         legend: {
-          display: false
+          display: true
         }
       }
     });

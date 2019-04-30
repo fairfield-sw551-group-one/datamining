@@ -75,15 +75,15 @@ def timeforcasingPredict():
         if 'HEART_RATE' not in df.columns:
             print("400: File missing HEART_RATE")
             return jsonify(message="File missing HEART_RATE"), 400
-        if 'CHARTTIME' not in df.columns:
-            print("400: File missing CHARTTIME")
-            return jsonify(message="File missing CHARTTIME"), 400
+        if 'CHART_TIME' not in df.columns:
+            print("400: File missing CHART_TIME")
+            return jsonify(message="File missing CHART_TIME"), 400
 
-        heart_rate = df[['CHARTTIME', 'HEART_RATE']]
+        heart_rate = df[['CHART_TIME', 'HEART_RATE']]
 
         # Make the index a time datatype, make only one reading per hour and fill in missing values
-        heart_rate['CHARTTIME'] = pd.to_datetime(heart_rate['CHARTTIME'])
-        heart_rate = heart_rate.set_index('CHARTTIME')
+        heart_rate['CHART_TIME'] = pd.to_datetime(heart_rate['CHART_TIME'])
+        heart_rate = heart_rate.set_index('CHART_TIME')
         heart_rate_resampled = heart_rate.resample('H').mean()
         heart_rate_resampled = heart_rate_resampled.interpolate(
             method='linear')

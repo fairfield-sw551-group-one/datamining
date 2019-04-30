@@ -74,7 +74,7 @@
             
             <div class="dropdown-item">
                 <i class="fas fa-heartbeat"style="margin-right:5px"></i>
-                <a href="ecgclassification.html">ECG Arythmia Classification</a>
+                <a href="ecgclassification.html">ECG Arrhythmia Classification</a>
             </div>
           </div>
         </li>
@@ -119,7 +119,7 @@
                   <div class="error-feedback"></div>
                   <div class="collapse" id="collapseExample" style="margin-top: 10px;">
                     <div class="card card-body">
-                      CSV file must contain the following 2 columns: CHARTTIME, HEART_RATE. <br>
+                      CSV file must contain the following 2 columns: CHART_TIME, HEART_RATE. <br>
                       There needs to be one datapoint per time interval. Default time interval: 1hr
                     </div>
                   </div>
@@ -135,7 +135,7 @@
         <div class="card mb-3 dataCard" >
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Predicted Heartrate (24hrs)</div>
+            Predicted Heartrate</div>
           <div class="card-body">
             <canvas id="myAreaChart" width="100%" height="30"></canvas>
           </div>
@@ -186,10 +186,6 @@
   <!-- File Upload JavaScript-->
   <script src="js/timeforcasting.js"></script>
 
-  <!-- Demo scripts for this page
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script> -->
 
 </body>
 </html>

@@ -75,7 +75,7 @@
 
           <div class="dropdown-item">
             <i class="fas fa-heartbeat" style="margin-right:5px"></i>
-            <a href="ecgclassification.html">ECG Arythmia Classification</a>
+            <a href="ecgclassification.html">ECG Arrhythmia Classification</a>
           </div>
         </div>
       </li>
@@ -97,7 +97,7 @@
 
         <div class="card" style="margin-bottom: 15px">
           <div class="card-header">
-            ECG Arythmia Classification
+            ECG Arrhythmia Classification
           </div>
           <div class="card-body">
             <p class="card-text">This model is used to predict types of arrhythmia present in electrocardiogram waves.
@@ -120,8 +120,8 @@
             <div class="error-feedback"></div>
             <div class="collapse" id="collapseExample" style="margin-top: 10px;">
               <div class="card card-body">
-                The model take a single-column CSV file.  <br>
-                The file should have one header title ECG_VALUE
+                This model accepts a single-column CSV file.  <br>
+                The file should have one header title: ECG_VALUE
               </div>
             </div>
 
@@ -147,6 +147,7 @@
           <div class="col-xl-4 col-lg-5 dataCard">
             <div class="card mb-3 h-100">
               <!-- Card Body -->
+              <div class="card-header">Predictions</div>
               <div class="card-body">
                 <canvas id="pieChart"></canvas>
               </div>
@@ -156,9 +157,46 @@
 
           <div class="col-xl-8 col-lg-5 dataCard">
             <div class="card mb-3 h-100">
-              <div class="card-header"></div>
+              <div class="card-header">Top Predicted Arrythmia</div>
               <!-- Card Body -->
               <div class="card-body">
+                <div id="APCinfo">
+                    <strong>Atrial Premature Contraction</strong> - can be caused by excessive consumption of alcohol, caffeine, or stress. Prolonged or consistent readings of APC may be early indicators of stroke or heart failure, or hypertension.
+                </div>
+                <div id="Ninfo">
+                    <strong>Normal</strong> - heart beats contain no detectable signs of arrhythmia.
+                </div>
+                <div id="PVCinfo">
+                    <strong>Premature Ventricular Contraction </strong> - Prolonged or consistent readings of Premature Ventricular Contractions are signs of Ventricular Tachycardia (VT) or Ventricular Fibrillation (VF). Both are extremely serious diseases that can lead to immediate heart failure.
+                </div>
+                <div id="LBBBinfo">
+                    <strong>Left Bundle Branch Block</strong> - a condition in which there's a delay or blockage along the pathway that electrical impulses travel to make your heart beat. It sometimes makes it harder for your heart to pump blood efficiently through your body. This can be caused by:
+                    <ul>
+                      <li>Heart attacks (myocardial infarction)</li>
+                      <li>Thickened, stiffened or weakened heart muscle (cardiomyopathy)</li>
+                      <li>A viral or bacterial infection of the heart muscle (myocarditis)</li>
+                      <li>High blood pressure (hypertension)</li>
+                    </ul>
+                </div>
+                <div id="RBBBinfo">
+                    <strong>Right Bundle Branch Block</strong> - a condition in which there's a delay or blockage along the pathway that electrical impulses travel to make your heart beat. It sometimes makes it harder for your heart to pump blood efficiently through your body. This can be caused by:
+                    <ul>
+                      <li>A heart abnormality that's present at birth (congenital) — such as atrial septal defect, a hole in the wall separating the upper chambers of the heart </li>
+                      <li>A heart attack (myocardial infarction)</li>
+                      <li>A viral or bacterial infection of the heart muscle (myocarditis)</li>
+                      <li>High blood pressure in the pulmonary arteries (pulmonary hypertension)</li>
+                      <li>A blood clot in the lungs (pulmonary embolism)</li>
+                    </ul>
+                </div>
+                <div id="VEinfo">
+                    <strong>Ventricular Escape</strong> - A ventricular escape beat may occur after a sinus pause or as a result of the following conditions: 
+                    <ul>
+                      <li>Hypoxia</li>
+                      <li>Excessive vagal effect on SA node/parasympathetic stimulation</li>
+                      <li>Proximal right coronary artery disease that often causes a sinus pause</li>
+                    </ul>
+                </div>
+
               </div>
             </div>
           </div>
