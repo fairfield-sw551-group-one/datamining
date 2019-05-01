@@ -37,7 +37,8 @@
     <ul class="navbar-nav ml-auto ml-md-0">
 
       <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -61,19 +62,20 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-brain"></i>
           <span>Models</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <div class="dropdown-item">
-              <i class="fas fa-clock" style="margin-right:5px"></i>
-              <a href="timeforcasting.html">Heartbeat Time Forcasting</a>
+            <i class="fas fa-clock" style="margin-right:5px"></i>
+            <a href="timeforcasting.html">Heartbeat Time Forcasting</a>
           </div>
-          
+
           <div class="dropdown-item">
-              <i class="fas fa-heartbeat"style="margin-right:5px"></i>
-              <a href="ecgclassification.html">ECG Arrhythmia Classification</a>
+            <i class="fas fa-heartbeat" style="margin-right:5px"></i>
+            <a href="ecgclassification.html">ECG Arrhythmia Classification</a>
           </div>
         </div>
       </li>
@@ -95,88 +97,130 @@
 
         <!-- Header Card-->
 
-          <div class="card" style="margin-bottom: 25px !important">
-              <div class="card-header">
-                Help
-              </div>
+        <div class="card" style="margin-bottom: 25px !important">
+          <div class="card-header">
+            Help
           </div>
-          <div class="card" style="margin-bottom: 25px !important">
-                <div class="card-header">
-                        FAQ 1
-                      </div>
-              <div class="card-body">
-                  <p class="card-text" style="display:inline">Here is the answer to FAQ!</p>
-              </div>
-          </div>
-          <div class="card" style="margin-bottom: 25px !important">
-                <div class="card-header">
-                        FAQ 2
-                      </div>
-              <div class="card-body">
-                  <p class="card-text" style="display:inline">Here is the answer to FAQ!</p>
-              </div>
-          </div>
-          <div class="card" style="margin-bottom: 25px !important">
-                <div class="card-header">
-                        FAQ 3
-                      </div>
-              <div class="card-body">
-                  <p class="card-text" style="display:inline">Here is the answer to FAQ!</p>
-              </div>
-          </div>
-          <div class="card" style="margin-bottom: 25px !important">
-                <div class="card-header">
-                        FAQ 4
-                      </div>
-              <div class="card-body">
-                  <p class="card-text" style="display:inline">Here is the answer to FAQ!</p>
-              </div>
-          </div>
-  </div>
-  <!-- /#wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+        <div class="card" style="margin-bottom: 25px !important">
+          <div class="card-header">What types of arrhythmia is the model able to predict?</div>
+ 
+        <div class="card-body">
+          <p class="card-text" style="display:inline">
+
+            Our model is trained on <strong>7</strong> distinct types of arrhythmia:
+            <br>
+            <br>
+            <strong>Normal</strong> - heart beats contain no detectable signs of arrhythmia.
+            <br>
+            <br>
+            <strong>Atrial Premature Contraction</strong> - can be caused by excessive consumption of alcohol, caffeine,
+            or stress. Prolonged or consistent readings of APC may be early indicators of stroke or heart failure, or
+            hypertension.
+            <br>
+            <br>
+            <strong>Premature Ventricular Contraction </strong> - Prolonged or consistent readings of Premature
+            Ventricular Contractions are signs of Ventricular Tachycardia (VT) or Ventricular Fibrillation (VF). Both
+            are extremely serious diseases that can lead to immediate heart failure.
+            <br>
+            <br>
+            <strong>Left Bundle Branch Block</strong> - a condition in which there's a delay or blockage along the
+            pathway that electrical impulses travel to make your heart beat. It sometimes makes it harder for your heart
+            to pump blood efficiently through your body. This can be caused by:
+            <ul>
+              <li>Heart attacks (myocardial infarction)</li>
+              <li>Thickened, stiffened or weakened heart muscle (cardiomyopathy)</li>
+              <li>A viral or bacterial infection of the heart muscle (myocarditis)</li>
+              <li>High blood pressure (hypertension)</li>
+            </ul>
+            <br>
+
+            <strong>Right Bundle Branch Block</strong> - a condition in which there's a delay or blockage along the
+            pathway that electrical impulses travel to make your heart beat. It sometimes makes it harder for your heart
+            to pump blood efficiently through your body. This can be caused by:
+            <ul>
+              <li>A heart abnormality that's present at birth (congenital) — such as atrial septal defect, a hole in the
+                wall separating the upper chambers of the heart </li>
+              <li>A heart attack (myocardial infarction)</li>
+              <li>A viral or bacterial infection of the heart muscle (myocarditis)</li>
+              <li>High blood pressure in the pulmonary arteries (pulmonary hypertension)</li>
+              <li>A blood clot in the lungs (pulmonary embolism)</li>
+            </ul>
+            <br>
+
+            <strong>Ventricular Escape</strong> - A ventricular escape beat may occur after a sinus pause or as a result
+            of the following conditions:
+            <ul>
+              <li>Hypoxia</li>
+              <li>Excessive vagal effect on SA node/parasympathetic stimulation</li>
+              <li>Proximal right coronary artery disease that often causes a sinus pause</li>
+            </ul>
+            <br>
+          </p>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom: 25px !important">
+        <div class="card-header">
+          Can this application only be used by only medical practitioners?
+        </div>
+        <div class="card-body">
+          <p class="card-text" style="display:inline">No, it is not  limited to medical practitioners, it can be used by anyone who has the data to use the models.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom: 25px !important">
+        <div class="card-header">
+          Does this application share my data with any medical organizations?
+        </div>
+        <div class="card-body">
+          <p class="card-text" style="display:inline">No, this application doesn’t share any data.</p>
         </div>
       </div>
     </div>
-  </div>
+    <!-- /#wrapper -->
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="vendor/datatables/jquery.dataTables.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/main.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Demo scripts for this page-->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/main.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
 
 </body>
 
