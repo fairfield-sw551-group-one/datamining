@@ -79,6 +79,8 @@ def timeforcasingPredict():
             print("400: File missing CHART_TIME")
             return jsonify(message="File missing CHART_TIME"), 400
 
+        os.remove(file_path)
+
         heart_rate = df[['CHART_TIME', 'HEART_RATE']]
 
         # Make the index a time datatype, make only one reading per hour and fill in missing values
@@ -90,7 +92,10 @@ def timeforcasingPredict():
 
         # Use last 24 hours as test data
         raw_values = heart_rate_resampled.values
-        train, test = raw_values[0:-24], raw_values[-24:]
+        train, test = raw_values[0:], raw_values[-24:]
+        # Use one hour as test data
+        #raw_values = heart_rate_resampled.values
+        #train, test = raw_values[0:-2], raw_values[-2:]
         sc = MinMaxScaler()
         train_sc = sc.fit_transform(train)
         test_sc = sc.transform(test)
@@ -124,8 +129,10 @@ def timeforcasingPredict():
         y_pred = model.predict(X_test)
 
         # Get data for response
-        timestamp = heart_rate_resampled.index
+        records = len(heart_rate_resampled.index)
+        timestamp = pd.date_range(heart_rate_resampled.index[0], periods=records,freq='H')
         inputBPM = heart_rate['HEART_RATE'].tolist()
+        inputBPM = inputBPM[:-24]
         predictBPM = sc.inverse_transform(y_pred).tolist()
 
         maxBPM = max(inputBPM)
@@ -136,15 +143,14 @@ def timeforcasingPredict():
         maxBPM = maxBPM + (maxBPM % 5)
 
         # Pad list with nul values
-        predictBPM = [None] * (len(inputBPM)-24) + predictBPM
+        print(predictBPM)
+        predictBPM = [None] * (len(inputBPM)) + predictBPM
 
-        # TODO generate actual response
-        # mock response
-        #timestamp = ['1:00','2:00','3:00','4:00','5:00','6:00','7:00']
-        #inputBPM = [78, 92, 84, 82, None, None, None]
-        #predictBPM = [None, None, None, None, 92, 90, 86]
-        #maxBPM = 92
-        #minBPM = 78
+        #print(timestamp.strftime('%m/%d/%Y %H:%M').tolist())
+        #print(inputBPM)
+        #print(predictBPM)
+        #print(minBPM)
+        #print(maxBPM)
 
         response = jsonify(timestamp=timestamp.strftime('%m/%d/%Y %H:%M').tolist(),
                            inputBPM=inputBPM, predictBPM=predictBPM, min=minBPM, max=maxBPM)
